@@ -1,4 +1,4 @@
-
+ï»¿
 #include "Disk.h"
 
 
@@ -33,12 +33,12 @@ uintmax_t Directory::delete_D(const std::string& name)
 void Directory::create_directory(const std::string& name) {
     if (std::filesystem::exists(name))
     {
-        std::cout << "Äèðåêòîðèÿ ñ òàêèì èìåíåì óæå ñóùåñòâóåò" << std::endl;
+        std::cout << "Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ Ñ Ñ‚Ð°ÐºÐ¸Ð¼ Ð¸Ð¼ÐµÐ½ÐµÐ¼ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚" << std::endl;
     }
     else
         try {
         if (std::filesystem::create_directory(name))
-            std::cout << "Äèðåêòîðèÿ ñîçäàíà" << std::endl;;
+            std::cout << "Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ ÑÐ¾Ð·Ð´Ð°Ð½Ð°" << std::endl;;
         }
         catch (std::filesystem::filesystem_error ec) {
             std::cout << "Code: " << ec.code()
@@ -52,7 +52,7 @@ void Directory::open_directory(stringvec& v) {
         std::cout << p << std::endl;
     }
     else
-        std::cout << "Ïóñòàÿ äèðåêòîðèÿ" << std::endl;
+        std::cout << "ÐŸÑƒÑÑ‚Ð°Ñ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ" << std::endl;
 }
 
 std::string Directory::path_leaf_string::operator()(const std::filesystem::directory_entry& entry) const

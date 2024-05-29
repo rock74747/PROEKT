@@ -1,4 +1,4 @@
-
+п»ї
 #include "Path.h"
 
 
@@ -8,16 +8,16 @@ void Manager::showMenu(stringvec& v, stringvec& s) {
     s.clear();
     int n;
     std::string dl;
-    DWORD dr = GetLogicalDrives(); // функция возвращает битовую маску
+    DWORD dr = GetLogicalDrives(); // С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ Р±РёС‚РѕРІСѓСЋ РјР°СЃРєСѓ
 
-    for (int x = 0; x < 26; x++) // проходимся циклом по битам
+    for (int x = 0; x < 26; x++) // РїСЂРѕС…РѕРґРёРјСЃСЏ С†РёРєР»РѕРј РїРѕ Р±РёС‚Р°Рј
     {
-        n = ((dr >> x) & 1); // узнаём значение текущего бита
-        if (n) // если единица - диск с номером x есть
+        n = ((dr >> x) & 1); // СѓР·РЅР°С‘Рј Р·РЅР°С‡РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ Р±РёС‚Р°
+        if (n) // РµСЃР»Рё РµРґРёРЅРёС†Р° - РґРёСЃРє СЃ РЅРѕРјРµСЂРѕРј x РµСЃС‚СЊ
         {
-            dl = ((char)(65 + x)); // получаем литеру диска
-            std::cout << "Диск " + dl + "\n";
-             v.push_back(dl+":"+"\\"); // пишем в вектор
+            dl = ((char)(65 + x)); // РїРѕР»СѓС‡Р°РµРј Р»РёС‚РµСЂСѓ РґРёСЃРєР°
+            std::cout << "Р”РёСЃРє " + dl + "\n";
+             v.push_back(dl+":"+"\\"); // РїРёС€РµРј РІ РІРµРєС‚РѕСЂ
         }
     }
 }
@@ -38,15 +38,15 @@ void Manager::dirfileinfo (stringvec& v, int& activeMenuItem, stringvec& s)
         std::filesystem::path sistems{ Manager::directory_name(v, activeMenuItem) };
         if (s.size() == 0) {
             std::filesystem::space_info root = std::filesystem::space(sistems);
-            std::cout << "Общий размер файловой системы: " << root.capacity << " байт" << "\n"
-                << "Количество свободного места: " << root.free << " байт" <<"\n"
-                << "Доступно: " << root.available << " байт" << std::endl;
+            std::cout << "РћР±С‰РёР№ СЂР°Р·РјРµСЂ С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјС‹: " << root.capacity << " Р±Р°Р№С‚" << "\n"
+                << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРІРѕР±РѕРґРЅРѕРіРѕ РјРµСЃС‚Р°: " << root.free << " Р±Р°Р№С‚" <<"\n"
+                << "Р”РѕСЃС‚СѓРїРЅРѕ: " << root.available << " Р±Р°Р№С‚" << std::endl;
         }
         else 
         if (is_directory(sistems)) {
             
             try {
-                std::cout << "Имя директории: "<< sistems.stem() << '\n';
+                std::cout << "РРјСЏ РґРёСЂРµРєС‚РѕСЂРёРё: "<< sistems.stem() << '\n';
                 std::vector<std::filesystem::path> files_and_folders { std::filesystem::recursive_directory_iterator(sistems),
                         std::filesystem::recursive_directory_iterator() };
                 size_t folder_size = 0;
@@ -60,9 +60,9 @@ void Manager::dirfileinfo (stringvec& v, int& activeMenuItem, stringvec& s)
                     else
                         b++;
                 }
-                std::cout << "Размер директории: " << folder_size << " bytes" << '\n'
-                    << "Количество папок: " << a << '\n'
-                    << "Количество файлов: " << b << std::endl;
+                std::cout << "Р Р°Р·РјРµСЂ РґРёСЂРµРєС‚РѕСЂРёРё: " << folder_size << " bytes" << '\n'
+                    << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїР°РїРѕРє: " << a << '\n'
+                    << "РљРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ: " << b << std::endl;
                 files_and_folders.clear();
             }
             catch (const std::filesystem::filesystem_error& e) {
@@ -72,10 +72,10 @@ void Manager::dirfileinfo (stringvec& v, int& activeMenuItem, stringvec& s)
         else {
             
             try {
-                std::cout << "Имя файла: " << sistems.stem() << '\n'
-                << "Разрешение файла: " << sistems.extension() << '\n';
+                std::cout << "РРјСЏ С„Р°Р№Р»Р°: " << sistems.stem() << '\n'
+                << "Р Р°Р·СЂРµС€РµРЅРёРµ С„Р°Р№Р»Р°: " << sistems.extension() << '\n';
                 std::uintmax_t fileSize = std::filesystem::file_size(sistems);
-                std::cout << "Размер файла: " << fileSize << " bytes" << std::endl;
+                std::cout << "Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°: " << fileSize << " bytes" << std::endl;
             }
             catch (const std::filesystem::filesystem_error& e) {
                 std::cerr << "Error: " << e.what() << std::endl;
