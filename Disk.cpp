@@ -48,8 +48,10 @@ void Directory::create_directory(const std::string& name) {
         
 void Directory::open_directory(stringvec& v) {
     if (v.size() > 0) {
-        for (auto& p : v)
-        std::cout << p << std::endl;
+        for (int i = 0; i < v.size(); i++) {
+            std::filesystem::path pathToDisplay{ v[i] };
+            std::cout << pathToDisplay.filename().string () << std::endl;
+        }
     }
     else
         std::cout << "Пустая директория" << std::endl;

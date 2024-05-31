@@ -70,7 +70,6 @@ void Manager::dirfileinfo (stringvec& v, int& activeMenuItem, stringvec& s)
             }
         }
         else {
-            
             try {
                 std::cout << "Имя файла: " << sistems.stem() << '\n'
                 << "Разрешение файла: " << sistems.extension() << '\n';
